@@ -1,0 +1,28 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+    <item name="colorPrimary">@color/ColorPrimary</item>
+    <item name="colorPrimaryDark">@color/ColorPrimaryDark</item>
+        <item name="android:textColor">#8A2BE2</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:editTextColor">#8A2BE2</item>
+        <item name="android:textColorHint">#8A2BE2</item>
+    </style>
+
+    <style name="NoTabAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="colorPrimary">@color/ColorPrimary</item>
+        <item name="colorPrimaryDark">@color/ColorPrimaryDark</item>
+        <item name="android:textColor">#8A2BE2</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:editTextColor">#8A2BE2</item>
+        <item name="android:textColorHint">#8A2BE2</item>
+    </style>
+
+    <!-- Styles for all EditText -->
+    <style name="EditTextStyle" >
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+</resources>

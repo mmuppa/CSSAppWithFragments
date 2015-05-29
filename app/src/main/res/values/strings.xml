@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">CSSAppWithFragments</string>
+    <string name="action_new">Add New Course</string>
+
+    <string name="about_label">This app was developed by Menaka Abraham as an example of using different
+    android concepts in TCSS450 Course. </string>
+    <string name="action_about">About</string>
+    <string name="title_activity_non_tab">NonTabActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+
+    <!-- course hints -->
+    <string name="course_id_hint">Enter Course Id</string>
+    <string name="course_short_desc_hint">Enter Course Title</string>
+    <string name="course_long_desc_hint">Enter Course Description</string>
+    <string name="prereqs_hint">Enter prerequisites</string>
+    <string name="add_course_button">Add Course</string>
+
+</resources>
