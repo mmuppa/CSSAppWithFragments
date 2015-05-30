@@ -26,6 +26,18 @@ public class NonTabActivity extends ActionBarActivity {
             fragment = new AboutFragment();
         } else if (intent.getStringExtra(MainActivity.SHOW).equals(MainActivity.SHOW_ADD_COURSE)) {
             fragment = new CourseFragment();
+            if (intent.getSerializableExtra(CourseFragment.COURSE_DATA) != null) {
+                Bundle data = new Bundle();
+                data.putSerializable(CourseFragment.COURSE_DATA
+                        , intent.getSerializableExtra(CourseFragment.COURSE_DATA));
+                fragment.setArguments(data);
+            }
+        } else if (intent.getStringExtra(MainActivity.SHOW).equals(MainActivity.SHOW_INSTRUCTOR)) {
+            Bundle data = new Bundle();
+            data.putSerializable(InstructorFragment.INSTRUCTOR_DATA
+                    , intent.getSerializableExtra(InstructorFragment.INSTRUCTOR_DATA));
+            fragment = new InstructorFragment();
+            fragment.setArguments(data);
         }
         fm.beginTransaction()
                 .add(R.id.fragment_container, fragment)

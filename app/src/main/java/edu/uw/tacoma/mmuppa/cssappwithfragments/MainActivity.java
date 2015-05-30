@@ -11,11 +11,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import edu.uw.tacoma.mmuppa.cssappwithfragments.model.Course;
+import edu.uw.tacoma.mmuppa.cssappwithfragments.model.Instructor;
 import edu.uw.tacoma.mmuppa.cssappwithfragments.view.SlidingTabLayout;
 
 
 public class MainActivity extends ActionBarActivity implements
-        CourseListFragment.OnCourseInteractionListener {
+        CourseListFragment.OnCourseInteractionListener,
+        InstructorListFragment.OnInstructorInteractionListener {
 
     private Toolbar mToolbar;
     private ViewPager mViewPager;
@@ -27,6 +29,7 @@ public class MainActivity extends ActionBarActivity implements
     public static final String SHOW = "show";
     public static final String SHOW_ADD_COURSE = "AddCourse";
     public static final String SHOW_ABOUT = "About";
+    public static final String SHOW_INSTRUCTOR = "Instructor";
 
 ;    @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,12 +100,28 @@ public class MainActivity extends ActionBarActivity implements
 
     @Override
     public void onCourseSelected(Course course) {
-        //Toast.makeText(this, "Got here", Toast.LENGTH_LONG).show();
-        CourseFragment fragment = new CourseFragment();
+        /*CourseFragment fragment = new CourseFragment();
         Bundle data = new Bundle();
         data.putSerializable(CourseFragment.COURSE_DATA, course);
         fragment.setArguments(data);
-        mViewPagerAdapter.replaceFragment(fragment);
+        mViewPagerAdapter.replaceFragment(fragment, 0);*/
+        Intent intent = new Intent(this, NonTabActivity.class);
+        intent.putExtra(SHOW, SHOW_ADD_COURSE);
+        intent.putExtra(CourseFragment.COURSE_DATA, course);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onInstructorSelected(Instructor instructor) {
+        Intent intent = new Intent(this, NonTabActivity.class);
+        intent.putExtra(SHOW, SHOW_INSTRUCTOR);
+        intent.putExtra(InstructorFragment.INSTRUCTOR_DATA, instructor);
+        startActivity(intent);
+        /*InstructorFragment fragment = new InstructorFragment();
+        Bundle data = new Bundle();
+        data.putSerializable(InstructorFragment.INSTRUCTOR_DATA, instructor);
+        fragment.setArguments(data);
+        mViewPagerAdapter.replaceFragment(fragment, 1);*/
     }
 
     private class ViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -115,9 +134,9 @@ public class MainActivity extends ActionBarActivity implements
         private CharSequence mTitles[]; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
         private int mTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
 
-        public void replaceFragment(Fragment fragment) {
-            getSupportFragmentManager().beginTransaction().remove(mFragments[0]).commit();
-            mFragments[0] = fragment;
+        public void replaceFragment(Fragment fragment, int index) {
+            getSupportFragmentManager().beginTransaction().remove(mFragments[index]).commit();
+            mFragments[index] = fragment;
            notifyDataSetChanged();
         }
 
