@@ -1,5 +1,6 @@
 package edu.uw.tacoma.mmuppa.cssappwithfragments;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -46,6 +47,17 @@ public class InstructorFragment extends Fragment {
         mTitleEditText = (EditText) v.findViewById(R.id.instructor_title);
         mOfficeEditText = (EditText) v.findViewById(R.id.instructor_office);
         mEmailEditText = (EditText) v.findViewById(R.id.instructor_email);
+        mEmailEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, mEmailEditText.getText());
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
+
+            }
+        });
         mImageView = (ImageView) v.findViewById(R.id.instructor_image);
 
         Bundle args = getArguments();
